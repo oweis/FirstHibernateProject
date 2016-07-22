@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.CollectionId;
 import org.hibernate.annotations.GenericGenerator;
@@ -30,7 +31,9 @@ public class UserDetails {
 	@GenericGenerator(name = "hilo-gen", strategy = "hilo")
 	@CollectionId(columns = { @Column(name="Address_id") }, generator = "hilo-gen", type = @Type(type = "long"))
 	private Collection<Address> listOfAddresses = new ArrayList<Address>();
-
+	@OneToOne
+	@JoinColumn(name="VEHICULE_ID")
+	private Vehicule vehicule;
 	
 	public UserDetails(){}
 	
@@ -38,6 +41,14 @@ public class UserDetails {
 		super();
 		this.userId = userId;
 		this.userName = userName;
+	}
+
+	public Vehicule getVehicule() {
+		return vehicule;
+	}
+
+	public void setVehicule(Vehicule vehicule) {
+		this.vehicule = vehicule;
 	}
 
 	public Collection<Address> getListOfAddresses() {

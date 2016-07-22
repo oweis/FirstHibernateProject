@@ -5,13 +5,18 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.oweis.dto.Address;
 import org.oweis.dto.UserDetails;
+import org.oweis.dto.Vehicule;
 
 public class HibernateTest {
 	
 	public static void main(String[] args){
 		
 		UserDetails	user = new UserDetails();
-		UserDetails user2 = new UserDetails();
+		
+		Vehicule vehicule = new Vehicule();
+
+		vehicule.setVehiculeName("Car");
+		user.setVehicule(vehicule);
 		
 		Address addr = new Address();
 		addr.setStreet("street");
@@ -28,29 +33,16 @@ public class HibernateTest {
 		user.setUserName("Oweis");
 		user.getListOfAddresses().add(addr);
 		user.getListOfAddresses().add(addr2);
-		
-		user2.setUserName("Yahya");
-		user2.getListOfAddresses().add(addr);
-		user2.getListOfAddresses().add(addr2);
-		
+			
 		SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 		Session session = sessionFactory.openSession();
-		Session session2 = sessionFactory.openSession();
+	
 		session.beginTransaction();
 		session.save(user);
+		session.save(vehicule);
 		session.getTransaction().commit();
 		session.close();
-		
-		session2.beginTransaction();
-		session2.save(user2);
-		session2.getTransaction().commit();
-		session2.close();
-		
-	//	user = null;
-	//  session = sessionFactory.openSession();
-		//user = (UserDetails) session.get(UserDetails.class,0);
-		//System.out.println(user.getListOfAddresses().size());
-		
+	
 	}
 
 }
