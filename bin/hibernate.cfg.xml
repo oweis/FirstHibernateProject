@@ -11,11 +11,12 @@
 <property name="hibernate.show_sql">true</property>
 <!--  create : hibernate will drop all your schema and start from scratch -->
 <!--  update : hibernate will keep old schema and add new anything new -->
-<property name="hibernate.hbm2ddl.auto">update</property>
+<property name="hibernate.hbm2ddl.auto">create</property>
 <!--Names the annotated entity class
 <property name="org.hibernate.tutorial.annotations.Event"/>-->
 <property name="hibernate.current_session_context_class">thread</property>
 <property name="hibernate.query.factory_class">org.hibernate.hql.classic.ClassicQueryTranslatorFactory</property>
 <mapping class="org.oweis.dto.UserDetails"/>
+<mapping class="org.oweis.dto.Vehicule"/>
 </session-factory>
 </hibernate-configuration>
