@@ -1,9 +1,14 @@
 package org.oweis.dto;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -12,11 +17,11 @@ public class Vehicule {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int vehiculeId;
 	private String vehiculeName;
-	@ManyToOne
-	private UserDetails user;
+	@ManyToMany(mappedBy="vehicule")
+	private Collection<UserDetails> user = new ArrayList<UserDetails>();
 	
 	public Vehicule(){}
-	
+			
 	public Vehicule(String vehiculeName){
 		this.vehiculeName = vehiculeName;
 	}
@@ -26,12 +31,12 @@ public class Vehicule {
 		this.vehiculeId = vehiculeId;
 		this.vehiculeName = vehiculeName;
 	}
-	
-	public UserDetails getUser() {
+
+	public Collection<UserDetails> getUser() {
 		return user;
 	}
 
-	public void setUser(UserDetails user) {
+	public void setUser(Collection<UserDetails> user) {
 		this.user = user;
 	}
 

@@ -11,19 +11,23 @@ public class HibernateTest {
 	
 	public static void main(String[] args){
 		
-		UserDetails	user = new UserDetails("Owei");
+		UserDetails	user1 = new UserDetails("Oweis");
+		UserDetails user2 = new UserDetails("Yahya");
 		
 		Vehicule vehicule1 = new Vehicule("Dacia");
 		Vehicule vehicule2 = new Vehicule("Ford");
 		
-		user.setJoinIds(vehicule1);
-		user.setJoinIds(vehicule2);
+		user1.setJoinIds(vehicule1);
+		user1.setJoinIds(vehicule2);
 		
+		user2.setJoinIds(vehicule1);
+		user2.setJoinIds(vehicule2);
 		SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 		Session session = sessionFactory.openSession();
 	
 		session.beginTransaction();
-		session.save(user);
+		session.save(user1);
+		session.save(user2);
 		session.save(vehicule1);
 		session.save(vehicule2);
 		session.getTransaction().commit();
