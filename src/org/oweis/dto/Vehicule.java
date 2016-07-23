@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Vehicule {
@@ -11,8 +12,14 @@ public class Vehicule {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int vehiculeId;
 	private String vehiculeName;
+	@ManyToOne
+	private UserDetails user;
 	
 	public Vehicule(){}
+	
+	public Vehicule(String vehiculeName){
+		this.vehiculeName = vehiculeName;
+	}
 	
 	public Vehicule(int vehiculeId, String vehiculeName) {
 		super();
@@ -20,6 +27,14 @@ public class Vehicule {
 		this.vehiculeName = vehiculeName;
 	}
 	
+	public UserDetails getUser() {
+		return user;
+	}
+
+	public void setUser(UserDetails user) {
+		this.user = user;
+	}
+
 	public int getVehiculeId() {
 		return vehiculeId;
 	}

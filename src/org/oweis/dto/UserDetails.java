@@ -30,8 +30,16 @@ public class UserDetails {
 	@JoinTable(name="User_Vehicule",joinColumns=@JoinColumn(name="User_id"),inverseJoinColumns=@JoinColumn(name="Vehicule_id"))
 	private Collection<Vehicule> vehicule = new ArrayList<Vehicule>();
 	
+	public void setJoinIds(Vehicule vehicule){
+		this.getVehicule().add(vehicule);
+		vehicule.setUser(this);
+	}
+	
 	public UserDetails(){}
 	
+	public UserDetails(String userName){
+	this.userName = userName;
+	}
 	public UserDetails(int userId, String userName) {
 		super();
 		this.userId = userId;
