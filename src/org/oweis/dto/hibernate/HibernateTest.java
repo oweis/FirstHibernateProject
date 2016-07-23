@@ -11,7 +11,7 @@ public class HibernateTest {
 	
 	public static void main(String[] args){
 		
-		UserDetails	user = new UserDetails("Owei");
+		UserDetails	user = new UserDetails("Oweis");
 		
 		Vehicule vehicule1 = new Vehicule("Dacia");
 		Vehicule vehicule2 = new Vehicule("Ford");
