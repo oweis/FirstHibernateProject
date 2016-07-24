@@ -5,7 +5,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.oweis.dto.FourWheeler;
 import org.oweis.dto.TwoWheeler;
-import org.oweis.dto.UserDetails;
 import org.oweis.dto.Vehicule;
 
 public class HibernateTest {
