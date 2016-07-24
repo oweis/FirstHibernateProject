@@ -3,6 +3,7 @@ package org.oweis.dto;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -27,12 +28,12 @@ public class UserDetails {
 	private int userId;
 	@Column (name="USER_NAME")
 	private String userName;
-	@ManyToMany
+	@OneToMany(cascade=CascadeType.PERSIST,mappedBy="user")
 	private Collection<Vehicule> vehicule = new ArrayList<Vehicule>();
 	
 	public void setJoinIds(Vehicule vehicule){
 		this.getVehicule().add(vehicule);
-		vehicule.getUser().add(this);
+		vehicule.setUser(this);
 	}
 	
 	public UserDetails(){}
