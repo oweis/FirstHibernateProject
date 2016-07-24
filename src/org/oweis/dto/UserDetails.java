@@ -28,7 +28,7 @@ public class UserDetails {
 	private int userId;
 	@Column (name="USER_NAME")
 	private String userName;
-	@OneToMany(cascade=CascadeType.PERSIST,mappedBy="user")
+	@OneToMany(cascade=CascadeType.ALL,mappedBy="user")
 	private Collection<Vehicule> vehicule = new ArrayList<Vehicule>();
 	
 	public void setJoinIds(Vehicule vehicule){

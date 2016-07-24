@@ -18,5 +18,7 @@
 <property name="hibernate.query.factory_class">org.hibernate.hql.classic.ClassicQueryTranslatorFactory</property>
 <mapping class="org.oweis.dto.UserDetails"/>
 <mapping class="org.oweis.dto.Vehicule"/>
+<mapping class="org.oweis.dto.FourWheeler"/>
+<mapping class="org.oweis.dto.TwoWheeler"/>
 </session-factory>
 </hibernate-configuration>
