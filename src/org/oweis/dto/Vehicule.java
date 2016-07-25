@@ -36,6 +36,7 @@ public class Vehicule {
 		this.vehiculeName = vehiculeName;
 	}
 
+	
 	public UserDetails getUser() {
 		return user;
 	}

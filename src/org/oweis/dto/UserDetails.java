@@ -1,40 +1,17 @@
 package org.oweis.dto;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
-import org.hibernate.annotations.CollectionId;
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Type;
-
-@Entity(name="USER_DETAILS")
+@Entity
 public class UserDetails {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int userId;
-	@Column (name="USER_NAME")
 	private String userName;
-	@OneToMany(cascade=CascadeType.ALL,mappedBy="user")
-	private Collection<Vehicule> vehicule = new ArrayList<Vehicule>();
-	
-	public void setJoinIds(Vehicule vehicule){
-		this.getVehicule().add(vehicule);
-		vehicule.setUser(this);
-	}
 	
 	public UserDetails(){}
 	
@@ -46,15 +23,6 @@ public class UserDetails {
 		this.userId = userId;
 		this.userName = userName;
 	}
-
-	public Collection<Vehicule> getVehicule() {
-		return vehicule;
-	}
-
-	public void setVehicule(Collection<Vehicule> vehicule) {
-		this.vehicule = vehicule;
-	}
-
 	public int getUserId() {
 		return userId;
 	}
