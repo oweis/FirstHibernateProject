@@ -4,10 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQuery;
+
 
 @Entity
-@NamedQuery(name="UserDetails.byId",query="from UserDetails where userid=:userid")
 public class UserDetails {
 	
 	@Id
