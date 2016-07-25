@@ -1,8 +1,12 @@
 package org.oweis.dto.hibernate;
 
+import java.util.List;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.oweis.dto.UserDetails;
 
 public class HibernateTest {
 	
@@ -14,39 +18,20 @@ public class HibernateTest {
 	
 		session.beginTransaction();
 		
-	/* CREATE 10 User
- 		for(int i=0;i<10;i++){
-			UserDetails user = new UserDetails();
-			user.setUserName("User " + i);
-			session.save(user);
-		}
-		//if we modify the name at this level, hibernate will update the bd
-		 user.setUserName("Updated Persistant");
-	*/
-	
-	/* READ :
-		 	UserDetails user = (UserDetails) session.get(UserDetails.class, 6);
-	 		S.O.P.(user.getName());
-	*/
-	
-	/* UPDATE : 
-	 		UserDetails user = (UserDetails) session.get(UserDetails.class, 5);
-	 		user.setUserName("Updated");
-	 		session.update(user);
-	*/
-		
-	/* Delete User where id=6
-			UserDetails user = (UserDetails) session.get(UserDetails.class, 6);
-			session.delete(user);
- 	*/
-	
+	//	Query query = session.createQuery("from UserDetails where userid>5");
+	//	Query query = session.createQuery("select username from UserDetails");
+		Query query = session.getNamedQuery("UserDetails.byId");
+		query.setFirstResult(0);
+		query.setMaxResults(4);
+		query.setInteger("userid", 2);
+		List<UserDetails> users = (List<UserDetails>) query.list();
+
 		session.getTransaction().commit();
 		session.close();
+		//System.out.println("Size Of List : " + users.size());
+		for(UserDetails u : users) System.out.println(u.getUserName());
 		
-	/*  We can access the user even after closing the session 
-	 * 		System.out.println("UserName (where id=6) : " + user.getUserName());
-	 */
-	
+
 	}
 
 }
